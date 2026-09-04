@@ -1,0 +1,334 @@
+:root {
+  --bg: #faf8f5;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.7);
+  --text: #2b2620;
+  --muted: #7a7168;
+  --border: #e5ddd2;
+  --accent: #b5651d;
+  --accent-hover: #8f4f16;
+  --accent-glow: rgba(181, 101, 29, 0.22);
+  --danger: #b3261e;
+  --warning-bg: #fff4e0;
+  --warning-text: #7a4b00;
+  --info-bg: #e8f1fb;
+  --info-text: #1a4a7a;
+  --error-bg: #fdecea;
+  --error-text: #8a1c14;
+  --radius: 10px;
+  --blob-peach: rgba(255, 166, 64, 0.6);
+  --blob-sage: rgba(120, 181, 120, 0.5);
+  --blob-berry: rgba(255, 111, 111, 0.48);
+  --blob-gold: rgba(255, 202, 58, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: radial-gradient(circle at 10% 15%, var(--blob-peach) 0%, var(--blob-peach) 12%, transparent 40%),
+    radial-gradient(circle at 90% 10%, var(--blob-sage) 0%, var(--blob-sage) 10%, transparent 40%),
+    radial-gradient(circle at 82% 85%, var(--blob-berry) 0%, var(--blob-berry) 10%, transparent 42%),
+    radial-gradient(circle at 12% 88%, var(--blob-gold) 0%, var(--blob-gold) 12%, transparent 40%);
+  background-repeat: no-repeat;
+  background-size: 140% 140%;
+  background-attachment: fixed;
+  animation: drift 32s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  0% {
+    background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%;
+  }
+  100% {
+    background-position: 12% 16%, 88% 14%, 86% 88%, 14% 84%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--accent), #e08a3c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.nav nav a {
+  margin-left: 1.25rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav nav a:hover {
+  color: var(--accent-hover);
+}
+
+main#app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 6px);
+  padding: 1.75rem;
+  box-shadow: 0 24px 60px -24px var(--accent-glow), 0 8px 24px -12px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.extract-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.url-input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: var(--border);
+  color: var(--text);
+}
+
+.btn-danger {
+  background: var(--error-bg);
+  color: var(--danger);
+}
+
+.btn-small {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.banner {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.banner-warning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.banner-info {
+  background: var(--info-bg);
+  color: var(--info-text);
+}
+
+.banner-error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.badges {
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--border);
+  color: var(--text);
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.preview-form label {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.field-input,
+.field-textarea,
+.field-input-small {
+  display: block;
+  width: 100%;
+  margin-top: 0.3rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.field-row .field-input-small {
+  width: 100%;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 260px;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.preview-image-empty {
+  height: 120px;
+  background: var(--border);
+}
+
+.manual-fallback {
+  margin-top: 1rem;
+}
+
+.manual-textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.recipe-card {
+  display: flex;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+
+.card-thumb {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.card-thumb-empty {
+  background: var(--border);
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.card-title:hover {
+  color: var(--accent);
+}
+
+.card-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.detail-image {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.ingredient-list,
+.instruction-list {
+  padding-left: 1.25rem;
+}
+
+.ingredient-list li,
+.instruction-list li {
+  margin-bottom: 0.4rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.meta-line {
+  font-weight: 600;
+}
+
+.empty {
+  color: var(--muted);
+}
